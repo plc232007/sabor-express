@@ -1,6 +1,6 @@
 import os
 
-restaurantes = []
+restaurantes = ["Caju Limão", "Savassi", "Rota do Churrasco"] # Para que os dados sejam mantidos seria necessário um banco de dados, como ele não existe, o que mantém é somente o que existe na execução
 
 def exibir_nome_do_programa():
 
@@ -30,9 +30,46 @@ def opcao_invalida():
     main()
 
 def cadastrar_novo_restaurante():
-    teste = input("teste:")
-    restaurantes.append(teste)
-    print (restaurantes)
+
+    os.system('clear')
+
+    print ("""
+
+░█████╗░░█████╗░██████╗░░█████╗░░██████╗████████╗██████╗░░█████╗░  ██╗
+██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔══██╗  ╚═╝
+██║░░╚═╝███████║██║░░██║███████║╚█████╗░░░░██║░░░██████╔╝██║░░██║  ░░░
+██║░░██╗██╔══██║██║░░██║██╔══██║░╚═══██╗░░░██║░░░██╔══██╗██║░░██║  ░░░
+╚█████╔╝██║░░██║██████╔╝██║░░██║██████╔╝░░░██║░░░██║░░██║╚█████╔╝  ██╗
+░╚════╝░╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ╚═╝
+
+""")
+
+    nome_restaurante = input("Qual o nome do restaurante que vai ser cadastrado? ")
+    restaurantes.append(nome_restaurante)
+    print (f'\nO restaurante {nome_restaurante} foi cadastrado com sucesso!\n')
+    input ("Digite uma tecla para voltar ao menu principal: ")
+    main()
+
+def listar_restaurantes():
+    os.system('clear')
+
+    print ("""
+
+
+██╗░░░░░██╗░██████╗████████╗░█████╗░░██████╗░███████╗███╗░░░███╗  ██╗
+██║░░░░░██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝░██╔════╝████╗░████║  ╚═╝
+██║░░░░░██║╚█████╗░░░░██║░░░███████║██║░░██╗░█████╗░░██╔████╔██║  ░░░
+██║░░░░░██║░╚═══██╗░░░██║░░░██╔══██║██║░░╚██╗██╔══╝░░██║╚██╔╝██║  ░░░
+███████╗██║██████╔╝░░░██║░░░██║░░██║╚██████╔╝███████╗██║░╚═╝░██║  ██╗
+╚══════╝╚═╝╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░░░░╚═╝  ╚═╝
+""")
+
+    for restaurante in restaurantes:
+        print ("- ", restaurante)
+
+    input ("\nDigite uma tecla para voltar ao menu principal: ")
+    main()
+
 def escolher_opcao():
     try: # assim o código não quebra, ele apresenta para o user uma mensagem em caso de erro.
         opcao_escolhida = int(input('Escolha uma opção: '))
@@ -40,7 +77,7 @@ def escolher_opcao():
             case 1:
                 cadastrar_novo_restaurante()
             case 2:
-                print('Listar restaurantes')
+                listar_restaurantes()
             case 3:
                 print('Ativar restaurante')
             case 4:
