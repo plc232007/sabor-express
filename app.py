@@ -24,10 +24,16 @@ def finalizar_app():
     os.system('clear')
     print ('Finalizando o app')
 
+def voltar_ao_menu():
+    input ("\nDigite uma tecla para voltar ao menu: ")
+    main()
+
 def opcao_invalida():
     print ("Opção Inválida!")
-    input ("Digite uma tecla para voltar ao menu pricipal: ")
-    main()
+    voltar_ao_menu()
+
+def exibir_subtitulo():
+    ... # parei aqui
 
 def cadastrar_novo_restaurante():
 
@@ -47,8 +53,7 @@ def cadastrar_novo_restaurante():
     nome_restaurante = input("Qual o nome do restaurante que vai ser cadastrado? ")
     restaurantes.append(nome_restaurante)
     print (f'\nO restaurante {nome_restaurante} foi cadastrado com sucesso!\n')
-    input ("Digite uma tecla para voltar ao menu principal: ")
-    main()
+    voltar_ao_menu()
 
 def listar_restaurantes():
     os.system('clear')
@@ -67,8 +72,7 @@ def listar_restaurantes():
     for restaurante in restaurantes:
         print ("- ", restaurante)
 
-    input ("\nDigite uma tecla para voltar ao menu principal: ")
-    main()
+    voltar_ao_menu()
 
 def escolher_opcao():
     try: # assim o código não quebra, ele apresenta para o user uma mensagem em caso de erro.
