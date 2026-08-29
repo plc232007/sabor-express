@@ -1,5 +1,7 @@
 import os
 
+restaurantes = []
+
 def exibir_nome_do_programa():
 
     print ("""
@@ -27,13 +29,16 @@ def opcao_invalida():
     input ("Digite uma tecla para voltar ao menu pricipal: ")
     main()
 
-
+def cadastrar_novo_restaurante():
+    teste = input("teste:")
+    restaurantes.append(teste)
+    print (restaurantes)
 def escolher_opcao():
     try: # assim o código não quebra, ele apresenta para o user uma mensagem em caso de erro.
         opcao_escolhida = int(input('Escolha uma opção: '))
         match opcao_escolhida:
             case 1:
-                print('Adicionar restaurante')
+                cadastrar_novo_restaurante()
             case 2:
                 print('Listar restaurantes')
             case 3:
