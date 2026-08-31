@@ -21,8 +21,7 @@ def exibir_opcoes():
     print ("4. Sair \n")
 
 def finalizar_app():
-    os.system('clear')
-    print ('Finalizando o app')
+    exibir_subtitulo ('Finalizando o app')
 
 def voltar_ao_menu():
     input ("\nDigite uma tecla para voltar ao menu: ")
@@ -32,14 +31,13 @@ def opcao_invalida():
     print ("Opção Inválida!")
     voltar_ao_menu()
 
-def exibir_subtitulo():
-    ... # parei aqui
+def exibir_subtitulo(texto):
+    os.system('clear')
+    print (texto)
 
 def cadastrar_novo_restaurante():
 
-    os.system('clear')
-
-    print ("""
+    exibir_subtitulo ("""
 
 ░█████╗░░█████╗░██████╗░░█████╗░░██████╗████████╗██████╗░░█████╗░  ██╗
 ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██╔══██╗  ╚═╝
@@ -56,9 +54,7 @@ def cadastrar_novo_restaurante():
     voltar_ao_menu()
 
 def listar_restaurantes():
-    os.system('clear')
-
-    print ("""
+    exibir_subtitulo ("""
 
 
 ██╗░░░░░██╗░██████╗████████╗░█████╗░░██████╗░███████╗███╗░░░███╗  ██╗
