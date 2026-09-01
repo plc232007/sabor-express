@@ -1,6 +1,10 @@
 import os
 
-restaurantes = ["Caju Limão", "Savassi", "Rota do Churrasco"] # Para que os dados sejam mantidos seria necessário um banco de dados, como ele não existe, o que mantém é somente o que existe na execução
+restaurantes = [{'nome': 'Praça', 'categoria': 'Japonesa', 'ativo': False, },
+                {'nome': 'Pizza Suprema', 'categoria': 'Italiana', 'ativo': True, },
+                {'nome': 'Praça', 'categoria': 'Japonesa', 'ativo': False, }
+
+] # Para que os dados sejam mantidos seria necessário um banco de dados, como ele não existe, o que mantém é somente o que existe na execução
 
 def exibir_nome_do_programa():
 
@@ -49,8 +53,15 @@ def cadastrar_novo_restaurante():
 """)
 
     nome_restaurante = input("Qual o nome do restaurante que vai ser cadastrado? ")
-    restaurantes.append(nome_restaurante)
+    categoria = input (f'Digite o nome da categoria do restaurante {nome_restaurante}: ')
+    dados_do_restaurante = { 'nome': nome_restaurante,
+                            'categoria':categoria,
+                            'ativo': False }
+
+    restaurantes.append(dados_do_restaurante)
+
     print (f'\nO restaurante {nome_restaurante} foi cadastrado com sucesso!\n')
+
     voltar_ao_menu()
 
 def listar_restaurantes():
@@ -66,7 +77,12 @@ def listar_restaurantes():
 """)
 
     for restaurante in restaurantes:
-        print ("- ", restaurante)
+        nome_restaurante = restaurante['nome']
+        categoria = restaurante['categoria']
+        ativo = restaurante['ativo']
+
+
+        print (f'- {nome_restaurante} | {categoria} | {ativo}')
 
     voltar_ao_menu()
 
