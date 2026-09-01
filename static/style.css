@@ -1,0 +1,246 @@
+:root {
+    --laranja: #f2622e;
+    --laranja-claro: #fff1ec;
+    --escuro: #1f1d1b;
+    --cinza: #6b6764;
+    --borda: #e8e3df;
+    --fundo: #faf8f6;
+    --verde: #1f9254;
+    --vermelho: #c0392b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--fundo);
+    color: var(--escuro);
+    line-height: 1.5;
+}
+
+.conteudo {
+    width: min(900px, 92%);
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+
+.cabecalho {
+    background: linear-gradient(135deg, var(--laranja), #ff8c42);
+    color: #fff;
+    padding: 48px 0;
+    margin-bottom: 32px;
+}
+
+.cabecalho h1 {
+    font-size: 2.4rem;
+    letter-spacing: -0.5px;
+}
+
+.cabecalho h1 span {
+    font-weight: 300;
+}
+
+.cabecalho p {
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+/* Avisos */
+
+.aviso {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-left: 4px solid;
+}
+
+.aviso.sucesso {
+    background-color: #eaf7ef;
+    border-color: var(--verde);
+    color: var(--verde);
+}
+
+.aviso.erro {
+    background-color: #fdecea;
+    border-color: var(--vermelho);
+    color: var(--vermelho);
+}
+
+/* Indicadores */
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.indicador {
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.indicador strong {
+    display: block;
+    font-size: 2rem;
+    color: var(--laranja);
+}
+
+.indicador span {
+    color: var(--cinza);
+    font-size: 0.9rem;
+}
+
+/* Cartões */
+
+.cartao {
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.cartao h2 {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+}
+
+/* Formulários */
+
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.formulario input,
+.formulario select {
+    flex: 1 1 180px;
+    padding: 11px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #fff;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+    outline: 2px solid var(--laranja);
+    outline-offset: -1px;
+}
+
+.filtros {
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 11px 20px;
+    transition: 0.15s;
+}
+
+.botao-principal {
+    background-color: var(--laranja);
+    color: #fff;
+    border: none;
+}
+
+.botao-principal:hover {
+    background-color: #d9501f;
+}
+
+.botao-secundario {
+    background-color: #fff;
+    color: var(--laranja);
+    border: 1px solid var(--laranja);
+}
+
+.botao-secundario:hover {
+    background-color: var(--laranja-claro);
+}
+
+/* Lista de restaurantes */
+
+.lista {
+    list-style: none;
+}
+
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-top: 1px solid var(--borda);
+}
+
+.item h3 {
+    font-size: 1rem;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-top: 4px;
+    background-color: var(--laranja-claro);
+    color: var(--laranja);
+    border-radius: 20px;
+    padding: 2px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status.ativo {
+    color: var(--verde);
+}
+
+.status.inativo {
+    color: var(--cinza);
+}
+
+.vazio {
+    color: var(--cinza);
+    padding: 12px 0;
+}
+
+/* Rodapé */
+
+.rodape {
+    text-align: center;
+    color: var(--cinza);
+    font-size: 0.85rem;
+    padding: 32px 16px 48px;
+}
+
+.rodape code {
+    background-color: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 5px;
+    padding: 2px 6px;
+}

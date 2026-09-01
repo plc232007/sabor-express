@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Express</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="conteudo">
+            <h1>Sabor<span>Express</span></h1>
+            <p>Gerenciador de restaurantes</p>
+        </div>
+    </header>
+
+    <main class="conteudo">
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensagem in mensagens %}
+                <div class="aviso {{ categoria }}">{{ mensagem }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <section class="indicadores">
+            <div class="indicador">
+                <strong>{{ total }}</strong>
+                <span>cadastrados</span>
+            </div>
+            <div class="indicador">
+                <strong>{{ total_ativos }}</strong>
+                <span>ativos</span>
+            </div>
+            <div class="indicador">
+                <strong>{{ categorias | length }}</strong>
+                <span>categorias</span>
+            </div>
+        </section>
+
+        <section class="cartao">
+            <h2>Cadastrar restaurante</h2>
+            <form action="{{ url_for('cadastrar') }}" method="post" class="formulario">
+                <input type="text" name="nome" placeholder="Nome do restaurante" required>
+                <input type="text" name="categoria" placeholder="Categoria" list="categorias" required>
+                <datalist id="categorias">
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria }}">
+                    {% endfor %}
+                </datalist>
+                <button type="submit" class="botao-principal">Cadastrar</button>
+            </form>
+        </section>
+
+        <section class="cartao">
+            <h2>Restaurantes</h2>
+
+            <form action="{{ url_for('home') }}" method="get" class="formulario filtros">
+                <input type="text" name="busca" placeholder="Buscar pelo nome" value="{{ busca_atual }}">
+                <select name="categoria">
+                    <option value="">Todas as categorias</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria }}" {% if categoria == categoria_atual %}selected{% endif %}>{{ categoria }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="botao-secundario">Filtrar</button>
+            </form>
+
+            {% if restaurantes %}
+                <ul class="lista">
+                    {% for restaurante in restaurantes %}
+                        <li class="item">
+                            <div>
+                                <h3>{{ restaurante.nome }}</h3>
+                                <span class="etiqueta">{{ restaurante.categoria }}</span>
+                            </div>
+                            <div class="acoes">
+                                <span class="status {{ 'ativo' if restaurante.ativo else 'inativo' }}">
+                                    {{ 'Ativo' if restaurante.ativo else 'Inativo' }}
+                                </span>
+                                <form action="{{ url_for('alternar', nome=restaurante.nome) }}" method="post">
+                                    <button type="submit" class="botao-secundario">
+                                        {{ 'Desativar' if restaurante.ativo else 'Ativar' }}
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="vazio">Nenhum restaurante encontrado com esses filtros.</p>
+            {% endif %}
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Feito em Python + Flask &middot; a mesma lógica roda no terminal com <code>python app.py</code></p>
+    </footer>
+
+</body>
+</html>
